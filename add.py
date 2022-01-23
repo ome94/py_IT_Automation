@@ -2,19 +2,13 @@
 
 import sys
 
-def add(a, b):
-    # How can I define a function to take as many arguments 
-    # as required when called,
-    # i.e a function without a fixed number of parameters.
-    # This way add() can be defined to take as many parameters
-    # or little parameterswhen it is called.
+def add(*args):
     """
     returns the sum  of values of a list of any length
     or lists.
     """
-    if type(a) != int or type(b) != int:
-        raise ValueError("Only Numbers Please")
-    return a + b
+    
+    return sum(args)
 
 def format_input():
     # Iterate over the args list and convert every element
