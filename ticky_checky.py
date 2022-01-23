@@ -10,7 +10,7 @@ with open('syslog.log') as log:
 	for line in log:
 		line = line.strip()
 		err_type = re.search(r"ticky: ERROR ([\w ]* )", line)
-		if error is not None:
+		if err_type is not None:
 			error[err_type.group(1)] = error.get(err_type.group(1), 0) + 1
 		user_log = re.search(r"ticky: (ERROR|INFO) [\w ]*.*\(([\w.]+)\)$", line)
 		log_type = user_log.group(1)
@@ -27,7 +27,7 @@ with open('error_message.csv', 'w') as err:
 	writer.writerow(('Error', 'Count'))
 	writer.writerows(sorted_error)
 
-with open('user_statstics.csv', 'w') as stat:
+with open('user_statistics.csv', 'w') as stat:
 	writer = csv.writer(stat)
 	writer.writerow(('Username', 'INFO', 'ERROR'))
 	for username, user_log in sorted_user:
